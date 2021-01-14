@@ -5,6 +5,23 @@ function updateUI() {
     if (game === undefined) {
         document.getElementById("board-holder").classList.add("is-invisible");
     } else {
+        for (let i = 0; i <= 5; i++) {
+            for (let j = 0; j <= 6; j++) {
+                let square = document.getElementById(`square-${i}-${j}`);
+                square.innerHTML = "";
+
+                if (game.getTokenAt(i, j) === 1) {
+                    let token = document.createElement("div")
+                    token.classList.add("token", "red");
+                    square.appendChild(token);
+                } else if (game.getTokenAt(i, j) === 2) {
+                    let token = document.createElement("div")
+                    token.classList.add("token", "black");
+                    square.appendChild(token);
+                }
+            }
+        }
+
         document.getElementById("board-holder").classList.remove("is-invisible")
         document.getElementById("game-name").innerHTML = game.getName();
 
@@ -38,7 +55,7 @@ document.addEventListener("DOMContentLoaded", event => {
 
     document.getElementById("click-targets").addEventListener("click", event => {
         if (event.target.id !== event.currentTarget.id) {
-            game.playInColumn(game.currentPlayer);
+            game.playInColumn(event.target.id[event.target.id.length - 1]);
             updateUI();
 
         }

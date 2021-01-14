@@ -3,6 +3,7 @@ export class Game {
         this.name1 = name1;
         this.name2 = name2;
         this.currentPlayer = 1;     //unsure?
+        this.columns = [new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column()]
     }
 
     getName() {
@@ -11,12 +12,22 @@ export class Game {
 
     //.token.red
     //.token.black
-    playInColumn(currentPlayer) {
-        if (currentPlayer === 1) {
+    playInColumn(index) {
+
+        index = Number(index);
+        this.columns[index].add(this.currentPlayer);
+
+        if (this.currentPlayer === 1) {
             this.currentPlayer = 2
 
-        } else if (currentPlayer === 2) {
+        } else if (this.currentPlayer === 2) {
             this.currentPlayer = 1;
         }
     }
+
+    getTokenAt(rowIndex, columnIndex) {
+        return this.columns[columnIndex].getTokenAt(rowIndex);
+    }
 }
+
+//Number()
