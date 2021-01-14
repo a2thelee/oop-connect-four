@@ -2,13 +2,13 @@ import { Game } from "./game.js";
 
 let game;
 function updateUI() {
-    if (!game) {
+    if (game === undefined) {
         document.getElementById("board-holder").classList.add("is-invisible");
     } else {
         document.getElementById("board-holder").classList.remove("is-invisible")
-        document.getElementById("board-holder").innerHTML = game.getName();
+        document.getElementById("game-name").innerHTML = game.getName();
 
-        game.currentPlayer  //
+        // game.currentPlayer  //
     }
 }
 
@@ -21,15 +21,28 @@ document.addEventListener("DOMContentLoaded", event => {
     });
 
     document.getElementById("new-game").addEventListener("click", event => {
-        event.target.disabled = true;
+        // event.target.disabled = true;
+        const player1 = document.getElementById("player-1-name").value;
+        const player2 = document.getElementById("player-2-name").value;
+        game = new Game(player1, player2);
         updateUI();
     });
 
     document.getElementById("click-targets").addEventListener("click", event => {
-        game.playInColumn(event);
+        game.playInColumn(game.currentPlayer);
         updateUI();
     })
+
+    document.getElementById("click-targets").addEventListener("mouseover", event => {
+        const topGrid = document.querySelectorAll(".click-target");
+
+
+    });
 });
+
+
+
+
 
 
 //clickTargets -> playInColumn

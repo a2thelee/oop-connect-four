@@ -9,10 +9,13 @@ export class Game {
         return `${this.name1} vs. ${this.name2}`;
     }
 
-    playInColumn(event) {
-        if (event.target.id === "player-1-name") {
+    //.token.red
+    //.token.black
+    playInColumn(currentPlayer) {
+        if (currentPlayer === 1) {
             this.currentPlayer = 2
-        } else if (event.target.id === "player-2-name") {
+
+        } else if (currentPlayer === 2) {
             this.currentPlayer = 1;
         }
     }
