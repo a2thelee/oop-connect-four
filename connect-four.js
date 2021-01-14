@@ -34,17 +34,21 @@ document.addEventListener("DOMContentLoaded", event => {
     })
 
     document.getElementById("click-targets").addEventListener("mouseover", event => {
-        const topGrid = document.querySelectorAll(".click-target");
+        // const topGrid = document.querySelectorAll(".click-target");
 
+        let column0 = document.getElementById("column-0");
+        let column1 = document.getElementById("column-1");
+        let column2 = document.getElementById("column-2");
+        let column3 = document.getElementById("column-3");
+        let column4 = document.getElementById("column-4");
+        let column5 = document.getElementById("column-5");
+        let column6 = document.getElementById("column-6");
+
+        if (game.currentPlayer === 1) {
+            event.target.classList.add("red");
+        } else if (game.currentPlayer === 2) {
+            event.target.classList.add("black");
+        }
 
     });
 });
-
-
-
-
-
-
-//clickTargets -> playInColumn
-//if 1, use black
-//if 2, use red
