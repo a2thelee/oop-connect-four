@@ -1,3 +1,5 @@
+import { Column } from "./column.js";
+
 export class Game {
     constructor(name1, name2) {
         this.name1 = name1;
@@ -27,6 +29,10 @@ export class Game {
 
     getTokenAt(rowIndex, columnIndex) {
         return this.columns[columnIndex].getTokenAt(rowIndex);
+    }
+
+    isColumnFull(colIndex) {
+        return this.columns[colIndex].isFull();
     }
 }
 

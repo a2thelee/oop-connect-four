@@ -5,6 +5,17 @@ function updateUI() {
     if (game === undefined) {
         document.getElementById("board-holder").classList.add("is-invisible");
     } else {
+        document.getElementById("board-holder").classList.remove("is-invisible")
+        document.getElementById("game-name").innerHTML = game.getName();
+
+        for (let i = 0; i <= 6; i++) {
+            if (game.isColumnFull(i)) {
+                document.getElementById(`column-${i}`).classList.add("full");
+            } else {
+                document.getElementById(`column-${i}`).classList.remove("full");
+            }
+        }
+
         for (let i = 0; i <= 5; i++) {
             for (let j = 0; j <= 6; j++) {
                 let square = document.getElementById(`square-${i}-${j}`);
@@ -21,9 +32,6 @@ function updateUI() {
                 }
             }
         }
-
-        document.getElementById("board-holder").classList.remove("is-invisible")
-        document.getElementById("game-name").innerHTML = game.getName();
 
         const topGrid = document.getElementById("click-targets");
 
